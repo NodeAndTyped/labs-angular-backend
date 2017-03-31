@@ -18,6 +18,7 @@ et lancez les commandes suivantes :
 npm install -g @angular/cli
 ng new tp-angular
 cd tp-angular
+npm install --save @angular/material
 ```
 
 > Une fois le projet créé vous pouvez l'ouvrir dans votre IDE.
@@ -26,6 +27,34 @@ Pour lancer le serveur de développement :
 
 ```bash
 ng serve
+```
+
+## Installation d'Angular Material
+
+Nous allons utiliser Angular material pour créer les interfaces de nos applications.
+
+Lancer la commande suivante:
+```bash
+npm install --save @angular/material
+```
+
+Puis rajouter dans le fichier `app.module.ts` la dépendence du module comme suivant :
+
+```typescript
+import { MaterialModule } from '@angular/material';
+// other imports 
+@NgModule({
+  imports: [MaterialModule],
+  ...
+})
+export class AppModule { }
+```
+
+En complément vous pouvez rajouter la feuille de style suivante dans la page index si vous voulez utiliser 
+les icônes de la librairie Material :
+
+```html
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 ```
 
 ## Générer des Composants, Directives, Pipe, etc...
@@ -58,4 +87,4 @@ Génération  | Usage
 [Enum](https://github.com/angular/angular-cli/wiki/generate-enum)           | `ng g enum my-new-enum`
 [Module](https://github.com/angular/angular-cli/wiki/generate-module)       | `ng g module my-module`
 
-[Suivant](https://github.com/NodeAndTyped/labs-typescript/blob/master/tp2-composant.md)
+[Suivant](https://github.com/NodeAndTyped/labs-angular2/blob/master/tp2-composant-pipe.md)
