@@ -11,156 +11,51 @@ Vérifier que vous avez les éléments suivants d’installé sur votre poste :
 ## Installation
 ### Initialisation du projet
 
-Créez un nouveau projet dans votre IDE. Puis dans le terminal, placez-vous sur votre nouveau projet et lancez la commande suivante :
+Nous allons utiliser l'outil `@angular/cli` pour générer le projet. Placez-vous dans votre workspace 
+et lancez les commandes suivantes :
 
 ```bash
-npm init
+npm install -g @angular/cli
+ng new tp-angular
+cd tp-angular
 ```
 
-> Suivez le guide d'initialisation de la commande. Elle va créer le fichier `package.json` avec les informations du projet.
+> Une fois le projet créé vous pouvez l'ouvrir dans votre IDE.
 
-### Installation des modules
+Pour lancer le serveur de développement :
 
-Maintenant nous allons installer les modules nécessaires à un projet TypeScript.
-
-Toujours dans le terminal lancez la commande suivante :
-
-```
-npm install -g typescript@2.0 
-npm install --save @types/jquery materialize-css
-npm install --save-dev connect-history-api-fallback http-proxy-middleware lite-server
-tsc --init
+```bash
+ng serve
 ```
 
-> Nous travaillerons de préférence avec la version 2.0 de TypeScript
+## Générer des Composants, Directives, Pipe, etc...
 
-La commande `tsc --init` va créer un nouveau fichier `tsconfig.json`. Ce fichier contient les informations nécessaire 
-au compilateur TypeScript pour compiler nos fichiers sources.
+Vous pouvez utiliser la commande `ng generate` (ou `ng g`) pour générer des composants Angular : 
 
-En l'état, il nous manque quelques options de compilation dans le `tsconfig.json`.
+```bash
+ng generate component my-new-component
+ng g component my-new-component # using the alias
 
-Voici les options à reporter dans votre `tsconfig.json`: 
-
-```json
-{
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "es6",
-    "noImplicitAny": false,
-    "lib": [
-      "es6",
-      "dom",
-      "es2015.collection"
-    ],
-    "types": [
-      "jquery"
-    ],
-    "experimentalDecorators":true,
-    "emitDecoratorMetadata": true,
-    "sourceMap": true,
-    "declaration": false
-  },
-  "exclude": ["node_modules"]
-}
+# components support relative path generation
+# if in the directory src/app/feature/ and you run
+ng g component new-cmp
+# your component will be generated in src/app/feature/new-cmp
+# but if you were to run
+ng g component ../newer-cmp
+# your component will be generated in src/app/newer-cmp
 ```
+Voici la liste des commandes possibles pour générer une fonctionnalité d'Angular: 
 
-> Votre projet est prêt pour compiler du TypeScript
-
-### Création du serveur de développement
-
-Nous allons maintenant mettre en place le serveur de développement.
-
-A la racine de projet, créer le fichier bs-config.js et collez le script suivant :
-
-```javascript
-var proxyMiddleware = require('http-proxy-middleware');
-var fallbackMiddleware = require('connect-history-api-fallback');
-
-module.exports = {
-    "port": 8000,
-    "files": [
-        "./webapp/**/*.{html,htm,css,js}",
-        "./node_modules/**/*.{html,htm,css,js}"
-    ],
-    "server": {
-        "baseDir": "webapp",
-        "routes": {
-            "/node_modules": "node_modules"
-        },
-
-        middleware: {
-            1: proxyMiddleware('/api', {
-                target: 'http://futurlogement5.azurewebsites.net',
-                changeOrigin: true   // for vhosted sites, changes host header to match to target's host
-            }),
-
-            2: fallbackMiddleware({
-                index: '/index.html',
-                verbose: true
-            })
-        }
-    }
-};
-```
-
-Ensuite il vous faut éditer le `package.json` et ajouter ceci :
-```
-{
-  "scripts": {
-     "serve": "lite-server"
-  }
-}
-```
-
-> `scripts` permet d'ajouter de nouvelle commande NPM qui peuvent être appelées en ligne de commande avec `npm run [nom cmd]`.
-
-Notre serveur de développement est prêt. Il nous reste plus qu'à créer un dossier `webapp` avec une première page `index.html`.
-
-
-### Création de l'application web
-
-Voici à quoi la page d'index doit ressembler :
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>TP</title>
-    <!--Import Google Icon Font-->
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="node_modules/materialize-css/bin/materialize.css"  media="screen,projection"/>
-
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-</head>
-<body>
-
-    <app>
-
-    </app>
-
-    <!-- vendor -->
-    <script type="text/javascript" src="node_modules/materialize-css/bin/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="node_modules/materialize-css/bin/materialize.js"></script>
-    <!-- end vendor -->
-
-    <script type="text/javascript" src="scripts/app.js"></script>
-</body>
-</html>
-```
-
-Ici il nous manque le script `app.js`. Notez que dans la page d'index nous incluerons toujours le fichier javascript généré par TypeScript et non
-le fichier `app.ts`. 
- 
-Dans le dossier `scripts`, créer un nouveau fichier `app.ts`.
-
-L'exercice sera d'intercepter la balise `app` et d'y afficher un `HELLO WORLD` avec jQuery.
-
-> Note : pour lancer votre server `npm run serve`.
-
-> Note 2 : pour compiler votre fichier TypeScript `tsc`.
-
-> Correction du TP : [tp1-solution](https://github.com/NodeAndTyped/labs-typescript/tree/tp1-installation)
-
+Génération  | Usage
+---       | ---
+[Component](https://github.com/angular/angular-cli/wiki/generate-component) | `ng g component my-new-component`
+[Directive](https://github.com/angular/angular-cli/wiki/generate-directive) | `ng g directive my-new-directive`
+[Pipe](https://github.com/angular/angular-cli/wiki/generate-pipe)           | `ng g pipe my-new-pipe`
+[Service](https://github.com/angular/angular-cli/wiki/generate-service)     | `ng g service my-new-service`
+[Class](https://github.com/angular/angular-cli/wiki/generate-class)         | `ng g class my-new-class`
+[Guard](https://github.com/angular/angular-cli/wiki/generate-guard)         | `ng g guard my-new-guard`
+[Interface](https://github.com/angular/angular-cli/wiki/generate-interface) | `ng g interface my-new-interface`
+[Enum](https://github.com/angular/angular-cli/wiki/generate-enum)           | `ng g enum my-new-enum`
+[Module](https://github.com/angular/angular-cli/wiki/generate-module)       | `ng g module my-module`
 
 [Suivant](https://github.com/NodeAndTyped/labs-typescript/blob/master/tp2-composant.md)
