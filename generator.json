@@ -1,0 +1,43 @@
+{
+
+  "pageTitle": "TP Node.js",
+  "repository": "https://github.com/NodeAndTyped/labs-angular2/",
+  "branch": "master",
+
+  "copy": [
+    {"from": "${baseDir}/src", "to": "src"}
+  ],
+
+  "checkout": {
+    "cwd": "../../Resources",
+    "branchs": [
+      "tp1-installation",
+      "tp2-solution",
+      "tp3-solution",
+      "tp4-solution",
+      "tp5-solution",
+      "tp6-solution"
+    ]
+  },
+
+  "pdfName": "labs.pdf",
+
+  "outDir": [
+    {"format": "html",  "path": "Instructor/html"},
+    {"format": "pdf",  "path": "Instructor/pdf"},
+    {"format": "html",  "path": "Student/html"},
+    {"format": "pdf",  "path": "Student/pdf"}
+  ],
+
+  "concat": {
+    "files": [
+      {"title": "Accueil", "path": "readme.md"},
+      {"title": "TP1 - Installation", "path": "tp1-installation.md"},
+      {"title": "TP2 - Création d'un composant", "path": "tp2-composant.md"},
+      {"title": "TP3 - Création d'un service et appel d'un webservice", "path": "tp3-service.md"},
+      {"title": "TP4 - Création d'un décorateur", "path": "tp4-decorator.md"},
+      {"title": "TP5 - Rechercher une annonce", "path": "tp5-composant-recherche.md"},
+      {"title": "TP6 - Consultation d'une annonce", "path": "tp6-consultation.md"}
+    ]
+  }
+}
