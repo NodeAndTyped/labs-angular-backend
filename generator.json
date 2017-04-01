@@ -11,7 +11,8 @@
   "checkout": {
     "cwd": "../../Resources",
     "branchs": [
-      "tp1-solution"
+      "tp1-solution",
+      "tp2-solution"
     ]
   },
 
