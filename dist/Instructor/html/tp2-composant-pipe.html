@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-    <title>TP Node.js</title>
+    <title>Labs Angular</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
@@ -128,9 +128,9 @@ export class AppModule { }
 <li>Les minutes.</li>
 </ul>
 <p>Et n'oubliez pas le bouton start/stop du chrono !</p>
-<p>Voici un exemple de ce qui est attendu :
-<img src="src/chrono.png" alt="chrono"></p>
-<p>Vous pouvez utiliser angular/material pour créer un bouton comme suivant :</p>
+<p>Voici un exemple de ce qui est attendu :</p>
+<p><img src="src/chrono.png" alt="max-300"> </p>
+<p>Vous pouvez utiliser <code>@angular/material pour créer un bouton comme suivant :</code></p>
 <pre><code class="language-html">&#x3C;button md-raised-button>Text&#x3C;/button>
 </code></pre>
 <p>Pour le css :</p>
@@ -181,8 +181,27 @@ export class AppModule { }
 <p>À partir du cours, essayez de créer une action au click du bouton.</p>
 <h3>Exercice 3</h3>
 <p>Maintenant que vous avez créer l'action au click du bouton, implémentez les méthodes <code>startTimer()</code> et <code>stopTimer()</code>.</p>
+<h2>Notre premier Pipe</h2>
+<p>En l'état l'affichage des minutes, secondes et millisecondes n'est pas correct (cf. capture chrono).</p>
+<p>Nous allons donc créer un Pipe, équivalent des filtres Angular 1, pour formatter les données.</p>
+<pre><code>src/app
+├── app.component.css
+├── app.component.html
+├── app.component.spec.ts
+├── app.component.ts
+├── app.module.ts
+├── chrono
+│   ├── chrono.component.css
+│   ├── chrono.component.html
+│   ├── chrono.component.spec.ts
+│   └── chrono.component.ts
+└── dec-to-str.pipe.ts
+</code></pre>
+<p>Commencez par créer le fichier <code>dec-to-str.pipe.ts</code>. Créez la <code>classe DecToStrPipe</code> comme présenté dans le cours.</p>
+<h3>Exercice</h3>
+<p>Le filtre doit transformer/formatter un entier vers un string sur deux chiffres !</p>
 <blockquote>
-<p>Correction du TP : <a href="https://github.com/NodeAndTyped/labs-angular2/tree/tp2-solution">tp2-solution</a></p>
+<p>Correction du TP : <a href="../../Resources/tp2-solution.zip">tp2-solution</a></p>
 </blockquote>
 <p><a href="https://github.com/NodeAndTyped/labs-typescript/blob/master/tp2-composant-pipe.md">Suivant</a></p>
 

@@ -124,3 +124,5 @@ footer.page-footer{
 .markdown-body ul, .markdown-body ul li {
     list-style: disc;
 }
+
+.markdown-body img[alt="max-300"]{max-width:300px; margin: 10px}

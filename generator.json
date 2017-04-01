@@ -1,7 +1,7 @@
 {
 
-  "pageTitle": "TP Node.js",
-  "repository": "https://github.com/NodeAndTyped/labs-angular2",
+  "pageTitle": "Labs Angular",
+  "repository": "https://github.com/NodeAndTyped/labs-angular2/",
   "branch": "master",
 
   "copy": [

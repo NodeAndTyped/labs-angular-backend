@@ -74,9 +74,12 @@ Commencez par créer le template HTML nécessaire à l'affichage des données du
 Et n'oubliez pas le bouton start/stop du chrono !
 
 Voici un exemple de ce qui est attendu :
-![chrono](src/chrono.png)
 
-Vous pouvez utiliser angular/material pour créer un bouton comme suivant :
+![max-300](src/chrono.png) 
+
+
+Vous pouvez utiliser `@angular/material pour créer un bouton comme suivant :`
+
 ```html
 <button md-raised-button>Text</button>
 ```
