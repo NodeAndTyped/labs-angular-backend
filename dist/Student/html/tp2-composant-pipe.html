@@ -88,8 +88,103 @@ ainsi que la création d'un Pipe pour formater l'affiche du composant.</p>
     └── chrono.component.ts
 </code></pre>
 <p>Vous devez donc créer les fichiers nécessaires au componsant Chrono !</p>
-<p>Ensuite</p>
-<p><a href="https://github.com/NodeAndTyped/labs-typescript/blob/master/tp2-composant.md">Suivant</a></p>
+<p>Ensuite éditez le fichier <code>chrono.component.ts</code> et collez le contenu suivant :</p>
+<pre><code class="language-typescript">import { Component, OnInit } from '@angular/core';
+
+@Component({
+    selector: 'chrono',
+    templateUrl: './chrono.component.html',
+    styleUrls: ['./chrono.component.css']
+})
+export class ChronoComponent implements OnInit {
+    
+    constructor() {
+        
+    }
+    
+    onInit() {
+        
+    }
+}
+</code></pre>
+<p>Puis ajoutez le composant dans la liste des composants de <code>AppModule</code> comme suivant :</p>
+<pre><code class="language-typescript">@NgModule({
+    declarations: [
+        AppComponent,
+        ChronoComponent // &#x3C;- Ici
+    ],
+    ...
+})
+export class AppModule { }
+</code></pre>
+<blockquote>
+<p>Vous devez systématiquement déclarer votre composant en tant que dépendence du module pour l'utiliser !</p>
+</blockquote>
+<h3>Exercice 1 - Template</h3>
+<p>Commencez par créer le template HTML nécessaire à l'affichage des données du chronomètre telles que:</p>
+<ul>
+<li>Les millisecondes,</li>
+<li>Les secondes,</li>
+<li>Les minutes.</li>
+</ul>
+<p>Et n'oubliez pas le bouton start/stop du chrono !</p>
+<p>Voici un exemple de ce qui est attendu :
+<img src="src/chrono.png" alt="chrono"></p>
+<p>Vous pouvez utiliser angular/material pour créer un bouton comme suivant :</p>
+<pre><code class="language-html">&#x3C;button md-raised-button>Text&#x3C;/button>
+</code></pre>
+<p>Pour le css :</p>
+<pre><code class="language-css">:host {
+    text-align: center;
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    background: #222;
+    padding: 30px;
+    border-radius: 100%;
+    position: relative;
+    z-index: 0;
+}
+:host>div {
+    position: relative;
+    z-index: 3;
+}
+:host:after {
+    content: ' ';
+    position: absolute;
+    width: 206px;
+    height: 206px;
+    border: 5px solid #414141;
+    border-radius: 100%;
+    top: -8px;
+    left: -8px;
+    padding: 30px;
+    z-index: 0;
+}
+:host .times {
+    display: block;
+    font-size:50px;
+    color:white;
+    margin-bottom: 50px;
+    padding-top: 30px;
+}
+
+:hover button {
+
+}
+</code></pre>
+<blockquote>
+<p>Note : le selecteur <code>:host</code> représente l'élément encapsulant votre composant Angular.</p>
+</blockquote>
+<h3>Exercice 2 - Création de l'action click</h3>
+<p>À partir du cours, essayez de créer une action au click du bouton.</p>
+<h3>Exercice 3</h3>
+<p>Maintenant que vous avez créer l'action au click du bouton, implémentez les méthodes <code>startTimer()</code> et <code>stopTimer()</code>.</p>
+<blockquote>
+<p>Correction du TP : <a href="https://github.com/NodeAndTyped/labs-angular2/tree/tp2-solution">tp2-solution</a></p>
+</blockquote>
+<p><a href="https://github.com/NodeAndTyped/labs-typescript/blob/master/tp2-composant-pipe.md">Suivant</a></p>
 
     </article>
 </div>

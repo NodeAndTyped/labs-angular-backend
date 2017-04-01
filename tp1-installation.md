@@ -87,4 +87,8 @@ Génération  | Usage
 [Enum](https://github.com/angular/angular-cli/wiki/generate-enum)           | `ng g enum my-new-enum`
 [Module](https://github.com/angular/angular-cli/wiki/generate-module)       | `ng g module my-module`
 
+
+> Correction du TP : [tp1-solution](https://github.com/NodeAndTyped/labs-angular2/tree/tp1-solution)
+
+
 [Suivant](https://github.com/NodeAndTyped/labs-angular2/blob/master/tp2-composant-pipe.md)
