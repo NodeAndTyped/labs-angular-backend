@@ -1,5 +1,4 @@
 {
-
   "pageTitle": "Labs Angular",
   "repository": "https://github.com/NodeAndTyped/labs-angular2/",
   "branch": "master",
@@ -29,7 +28,7 @@
   "concat": {
     "files": [
       {"title": "Accueil", "path": "readme.md"},
-      {"title": "TP1 - Installation", "cwd":"docs", "path": "tp1-installation.md"},
+      {"title": "TP 1 - Installation", "cwd":"docs", "path": "tp1-installation.md"},
       {"title": "TP 2 - Le composant Chronomètre", "cwd":"docs", "path": "tp2-composant-pipe.md"}
     ]
   }
