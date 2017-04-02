@@ -50,27 +50,151 @@
     </li>
 
     
-    <li><a href="index.html">Accueil</a></li>
+    <li><a href="#accueil">Accueil</a></li>
     
-    <li><a href="tp1-installation.html">TP1 - Installation</a></li>
+    <li><a href="#tp1installation">TP1 - Installation</a></li>
     
-    <li><a href="tp2-composant-pipe.html">TP 2 - Le composant Chronomètre</a></li>
+    <li><a href="#tp2lecomposantchronometre">TP 2 - Le composant Chronomètre</a></li>
     
 </ul>
 
 <ul id="dropdown1" class="dropdown-content">
     
-    <li><a href="index.html">Accueil</a></li>
+    <li><a href="#accueil">Accueil</a></li>
     
-    <li><a href="tp1-installation.html">TP1 - Installation</a></li>
+    <li><a href="#tp1installation">TP1 - Installation</a></li>
     
-    <li><a href="tp2-composant-pipe.html">TP 2 - Le composant Chronomètre</a></li>
+    <li><a href="#tp2lecomposantchronometre">TP 2 - Le composant Chronomètre</a></li>
     
 </ul>
 
 <div class="container">
     <article class="markdown-body">
-        <h1>TP 2 - Le composant Chronomètre</h1>
+        <div id="accueil"></div>
+<h1>Labs Angular</h1>
+<p>Nous verrons au cours des travaux pratiques les points suivants :</p>
+<ul>
+<li><a href="#tp1installation">TP 1 – Mise en place de l’environnement</a>,</li>
+<li><a href="#tp2lecomposantchronometre">TP 2 – Le chronomètre</a>,</li>
+</ul>
+<h2>Objectifs</h2>
+<p>Le labs a pour objectif de vous présenter les différentes fonctionnalités d'Angular. Au programme :</p>
+<ul>
+<li>Mise en place de l'environnement avec <code>@angular/cli</code></li>
+<li>Création d'un composant chronomètre et d'un Pipe,</li>
+<li>Utilisation des services Angular pour communiquer avec le backend,</li>
+<li>Création d'un formulaire de saisie,</li>
+<li>Mise en place du routage.</li>
+</ul>
+
+<div id="tp1installation"></div>
+<h1>TP 1 - Installation de l'environnement</h1>
+<h2>Prérequis</h2>
+<p>Vérifier que vous avez les éléments suivants d’installé sur votre poste :</p>
+<ul>
+<li>Node v6 ou plus avec la commande npm –v,</li>
+<li>Git, nous l’utiliserons pour récupérer le projet initial,</li>
+<li>Webstorm (ou un autre IDE)</li>
+</ul>
+<h2>Installation</h2>
+<h3>Initialisation du projet</h3>
+<p>Nous allons utiliser l'outil <code>@angular/cli</code> pour générer le projet. Placez-vous dans votre workspace
+et lancez les commandes suivantes :</p>
+<pre><code class="language-bash">npm install -g @angular/cli
+ng new tp-angular
+cd tp-angular
+npm install --save @angular/material
+</code></pre>
+<blockquote>
+<p>Une fois le projet créé vous pouvez l'ouvrir dans votre IDE.</p>
+</blockquote>
+<p>Pour lancer le serveur de développement :</p>
+<pre><code class="language-bash">ng serve
+</code></pre>
+<h2>Installation d'Angular Material</h2>
+<p>Nous allons utiliser Angular material pour créer les interfaces de nos applications.</p>
+<p>Lancer la commande suivante:</p>
+<pre><code class="language-bash">npm install --save @angular/material
+</code></pre>
+<p>Puis rajouter dans le fichier <code>app.module.ts</code> la dépendence du module comme suivant :</p>
+<pre><code class="language-typescript">import { MaterialModule } from '@angular/material';
+// other imports 
+@NgModule({
+  imports: [MaterialModule],
+  ...
+})
+export class AppModule { }
+</code></pre>
+<p>En complément vous pouvez rajouter la feuille de style suivante dans la page index si vous voulez utiliser
+les icônes de la librairie Material :</p>
+<pre><code class="language-html">&#x3C;link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</code></pre>
+<h2>Générer des Composants, Directives, Pipe, etc...</h2>
+<p>Vous pouvez utiliser la commande <code>ng generate</code> (ou <code>ng g</code>) pour générer des composants Angular : </p>
+<pre><code class="language-bash">ng generate component my-new-component
+ng g component my-new-component # using the alias
+
+# components support relative path generation
+# if in the directory src/app/feature/ and you run
+ng g component new-cmp
+# your component will be generated in src/app/feature/new-cmp
+# but if you were to run
+ng g component ../newer-cmp
+# your component will be generated in src/app/newer-cmp
+</code></pre>
+<p>Voici la liste des commandes possibles pour générer une fonctionnalité d'Angular: </p>
+<table>
+<thead>
+<tr>
+<th>Génération</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/angular/angular-cli/wiki/generate-component">Component</a></td>
+<td><code>ng g component my-new-component</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/angular/angular-cli/wiki/generate-directive">Directive</a></td>
+<td><code>ng g directive my-new-directive</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/angular/angular-cli/wiki/generate-pipe">Pipe</a></td>
+<td><code>ng g pipe my-new-pipe</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/angular/angular-cli/wiki/generate-service">Service</a></td>
+<td><code>ng g service my-new-service</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/angular/angular-cli/wiki/generate-class">Class</a></td>
+<td><code>ng g class my-new-class</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/angular/angular-cli/wiki/generate-guard">Guard</a></td>
+<td><code>ng g guard my-new-guard</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/angular/angular-cli/wiki/generate-interface">Interface</a></td>
+<td><code>ng g interface my-new-interface</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/angular/angular-cli/wiki/generate-enum">Enum</a></td>
+<td><code>ng g enum my-new-enum</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/angular/angular-cli/wiki/generate-module">Module</a></td>
+<td><code>ng g module my-module</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Correction du TP : <a href="../../Resources/tp1-solution.zip">tp1-solution</a></p>
+</blockquote>
+
+<div id="tp2lecomposantchronometre"></div>
+<h1>TP 2 - Le composant Chronomètre</h1>
 <p>Nous allons dans ce TP créer un composant Chronomètre. Nous verrons ainsi comment créer un composant
 ainsi que la création d'un Pipe pour formater l'affiche du composant.</p>
 <h2>Notre premier composant</h2>
@@ -203,7 +327,6 @@ export class AppModule { }
 <blockquote>
 <p>Correction du TP : <a href="../../Resources/tp2-solution.zip">tp2-solution</a></p>
 </blockquote>
-<p><a href="https://github.com/NodeAndTyped/labs-typescript/blob/master/tp2-composant-pipe.md">Suivant</a></p>
 
     </article>
 </div>

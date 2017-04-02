@@ -5,8 +5,9 @@ export interface IFileContent {
     content: string;
 }
 export interface IFile {
-    title: string,
-    path: string
+    title: string;
+    path: string;
+    cwd: string;
 }
 
 export interface IFormatOutput {

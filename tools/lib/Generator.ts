@@ -5,6 +5,7 @@ import {GeneratorHTML} from './GeneratorHTML';
 import {GeneratorEbook} from './GeneratorEbook';
 import {GeneratorPDF} from './GeneratorPDF';
 import {$log} from "ts-log-debug";
+import * as Path from "path";
 
 export class Generator {
     /**
@@ -75,7 +76,9 @@ export class Generator {
 
         const mapper: any = (file: IFile) =>
             FileUtils
-                .read(this.settings.root + '/' + file.path)
+                .read(Path.resolve(Path.join(
+                    ...[this.settings.root, file.cwd, file.path].filter(o => !!o)
+                )))
                 .then(content => (<IFileContent> {
                     title: file.title,
                     path: file.path,
@@ -111,7 +114,8 @@ export class Generator {
 
         if(this.settings.checkout) {
 
-            $log.debug('Checkout all files...')
+            $log.debug('Checkout all files...');
+
             return Promise.all(this.settings
                 .checkout
                 .branchs
@@ -135,7 +139,7 @@ export class Generator {
         $log.debug('Generate directories');
 
         const promises = this.settings.outDir.map((task: IFormatOutput) => {
-            const path = this.settings.cwd + '/' + task.path;
+            const path = Path.join(this.settings.cwd, task.path);
 
             return FileUtils
                 .mkdirs(path)
@@ -164,7 +168,10 @@ export class Generator {
                                 );
                         case "pdf":
                             return FileUtils
-                                .copy(this.pdfDir + '/' + this.settings.pdfName, path + '/' + this.settings.pdfName)
+                                .copy(
+                                    Path.join(this.pdfDir, this.settings.pdfName),
+                                    Path.join(path + '/' + this.settings.pdfName)
+                                )
                                 .then(() =>
                                     FileUtils.copy(
                                         this.resourcesDir,

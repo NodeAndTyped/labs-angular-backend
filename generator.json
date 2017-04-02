@@ -22,14 +22,15 @@
     {"format": "html",  "path": "Instructor/html"},
     {"format": "pdf",  "path": "Instructor/pdf"},
     {"format": "html",  "path": "Student/html"},
-    {"format": "pdf",  "path": "Student/pdf"}
+    {"format": "pdf",  "path": "Student/pdf"},
+    {"format": "ebook",  "path": "../"}
   ],
 
   "concat": {
     "files": [
       {"title": "Accueil", "path": "readme.md"},
-      {"title": "TP1 - Installation", "path": "tp1-installation.md"},
-      {"title": "TP 2 - Le composant Chronomètre", "path": "tp2-composant-pipe.md"}
+      {"title": "TP1 - Installation", "cwd":"docs", "path": "tp1-installation.md"},
+      {"title": "TP 2 - Le composant Chronomètre", "cwd":"docs", "path": "tp2-composant-pipe.md"}
     ]
   }
 }
