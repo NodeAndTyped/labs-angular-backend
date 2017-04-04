@@ -1,35 +1,54 @@
 {
   "pageTitle": "Labs Angular",
-  "repository": "https://github.com/NodeAndTyped/labs-angular2/",
+  "repository": "https://github.com/NodeAndTyped/labs-angular/",
+  "pdfName": "labs.pdf",
   "branch": "master",
 
-  "copy": [
-    {"from": "${baseDir}/src", "to": "src"}
-  ],
-
   "checkout": {
-    "cwd": "../../Resources",
     "branchs": [
       "tp1-solution",
       "tp2-solution"
     ]
   },
 
-  "pdfName": "labs.pdf",
-
-  "outDir": [
-    {"format": "html",  "path": "Instructor/html"},
-    {"format": "pdf",  "path": "Instructor/pdf"},
-    {"format": "html",  "path": "Student/html"},
-    {"format": "pdf",  "path": "Student/pdf"},
-    {"format": "ebook",  "path": "../"}
-  ],
-
   "concat": {
     "files": [
-      {"title": "Accueil", "path": "readme.md"},
-      {"title": "TP 1 - Installation", "cwd":"docs", "path": "tp1-installation.md"},
-      {"title": "TP 2 - Le composant Chronomètre", "cwd":"docs", "path": "tp2-composant-pipe.md"}
+      {"title": "Accueil", "cwd":"${root}/src", "path": "index.md"},
+      {"title": "TP 1 - Installation", "cwd":"${root}/src", "path": "tp1-installation.md"},
+      {"title": "TP 2 - Le composant Chronomètre", "cwd":"${root}/src", "path": "tp2-composant-pipe.md"}
     ]
-  }
+  },
+
+  "copy": [
+    {"from": "${root}/src/images", "to": "images"}
+  ],
+
+  "outDir": [
+    {
+      "format": "html",
+      "path": "${root}/dist/Instructor/html",
+      "resources": "${root}/dist/Resources"
+    },
+    {
+      "format": "pdf",
+      "path": "${root}/dist/Instructor/pdf",
+      "resources": "${root}/dist/Resources"
+    },
+    {
+      "format": "ebook",
+      "path": "${root}/dist/Student/ebook",
+      "resources": "${root}/dist/Resources"
+    },
+    {
+      "format": "pdf",
+      "path": "${root}/dist/Student/pdf",
+      "resources": "${root}/dist/Resources"
+    },
+    {
+      "format": "html",
+      "path": "${root}/docs",
+      "resources": "${root}/docs/resources"
+    }
+  ]
+
 }
