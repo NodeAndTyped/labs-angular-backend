@@ -17,7 +17,7 @@ src/app
 
 Dans le dossier `src/app`, créer votre 1er service sous le nom UserService.
 
-Pour aller vite, vous pouvez utiliser l'outil `@angular/cli` pour créer votre service.
+Pour aller plus vite, vous pouvez utiliser l'outil `@angular/cli` pour créer votre service.
 
 `ng g service user`
 
@@ -43,9 +43,9 @@ Ce service retourne la liste de tous les utilisateurs avec leur statut en ligne 
 
 Dans le dossier `src/app`, créer un dossier `user-table` qui contiendra tout le code source du composant UserTableComponent.
 
-Créer un composant UserTableComponent qui afficher la liste des utilisateurs avec leur statut.
+Ce composant UserTableComponent affiche la liste des utilisateurs avec leur statut dans tableau HTML.
 
-Pour aller vite, vous pouvez utiliser l'outil `@angular/cli` pour créer votre composant.
+Pour aller plus vite, vous pouvez utiliser l'outil `@angular/cli` pour créer votre composant.
 
 `ng g component user-table`
 
@@ -70,11 +70,6 @@ Ci-dessous le code source ajouté au projet :
 
 ```
 src/app
-├── app.component.css
-├── app.component.html
-├── app.component.spec.ts
-├── app.component.ts
-├── app.module.ts
 └── user-table
     ├── user-table.component.css
     ├── user-table.component.html
@@ -82,11 +77,11 @@ src/app
     └── user-table.component.ts
 ```
 
-## Compostant enfant
+## Composant enfant
 
 Créer un composant UserTableRowComponent représentant une ligne du tableau.
 
-Pour aller vite, vous pouvez utiliser l'outil `@angular/cli` pour créer votre composant.
+Pour aller plus vite, vous pouvez utiliser l'outil `@angular/cli` pour créer votre composant.
 
 `ng g component user-table-row`
 
@@ -96,11 +91,6 @@ Ci-dessous le code source ajouté au projet :
 
 ```
 src/app
-├── app.component.css
-├── app.component.html
-├── app.component.spec.ts
-├── app.component.ts
-├── app.module.ts
 └── user-table-row
     ├── user-table-row.component.css
     ├── user-table-row.component.html
