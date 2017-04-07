@@ -75,111 +75,82 @@
 
 <div class="container">
     <article class="markdown-body">
-        <h1>TP 1 - Installation de l'environnement</h1>
-<h2>Prérequis</h2>
-<p>Vérifier que vous avez les éléments suivants d’installé sur votre poste :</p>
+        <h1>TP 3 - Créer une liste d'utilisateurs en ligne</h1>
+<p>Dans ce TP, nous allons créer un tableau contenant la liste des utilisateurs avec leur statut en ligne. </p>
+<p>Pour rappel, la structure initiale du projet est la suivante :</p>
+<pre><code>src/app
+├── app.component.css
+├── app.component.html
+├── app.component.spec.ts
+├── app.component.ts
+├── app.module.ts
+</code></pre>
+<h2>Notre 1er Service</h2>
+<p>Dans le dossier <code>src/app</code>, créer votre 1er service sous le nom UserService.</p>
+<p>Pour aller plus vite, vous pouvez utiliser l'outil <code>@angular/cli</code> pour créer votre service.</p>
+<p><code>ng g service user</code></p>
+<pre><code>src/app
+├── user.service.spec.ts
+├── user.service.ts
+</code></pre>
+<p>Ce service retourne la liste de tous les utilisateurs avec leur statut en ligne :</p>
+<pre><code class="language-json">[
+    {"id": 1, "email": "john.doe@gmail.com", "status": "online"},
+    {"id": 2, "email": "jane.doe@gmail.com", "status": "online"},
+    {"id": 3, "email": "jean.dupond@gmail.com", "status": "busy"},
+    {"id": 4, "email": "jean.dupont@gmail.com", "status": "offline"},
+    {"id": 5, "email": "jeanne.dupond@gmail.com", "status": "offline"},
+    {"id": 6, "email": "joe.doe@gmail.com", "status": "online"}
+]
+</code></pre>
+<h2>Compostant tableau des utilisateur</h2>
+<p>Dans le dossier <code>src/app</code>, créer un dossier <code>user-table</code> qui contiendra tout le code source du composant UserTableComponent.</p>
+<p>Ce composant UserTableComponent affiche la liste des utilisateurs avec leur statut dans tableau HTML.</p>
+<p>Pour aller plus vite, vous pouvez utiliser l'outil <code>@angular/cli</code> pour créer votre composant.</p>
+<p><code>ng g component user-table</code></p>
+<p>Ajouter les feuilles de style à votre composant pour que :</p>
+<pre><code>    - les lignes pairs soient en fonds gris clair
+    - le texte 'online' soit en vert
+    - le texte 'offline' soit en gris clair
+    - le texte 'busy' soit en rouge
+    - l'entête du tableau soit en fonds bleu clair, avec le texte en blanc
+</code></pre>
+<p>Cliquer sur le texte descriptif (balise caption) du tableau pour cacher/afficher les utilisateurs hors ligne.</p>
+<pre><code>    Le texte du caption est sousligné.
+    Chaque clic fait permuter les textes suivants :  
+    "Cliquez sur ce texte pour cacher les utilisateurs hors ligne", texte stylisé en gris clair
+    "Cliquez sur ce texte pour afficher les utilsateurs en ligne", texte stylisé en bleu foncé
+</code></pre>
+<p>Ci-dessous le code source ajouté au projet :</p>
+<pre><code>src/app
+└── user-table
+    ├── user-table.component.css
+    ├── user-table.component.html
+    ├── user-table.component.spec.ts
+    └── user-table.component.ts
+</code></pre>
+<h2>Composant enfant</h2>
+<p>Créer un composant UserTableRowComponent représentant une ligne du tableau.</p>
+<p>Pour aller plus vite, vous pouvez utiliser l'outil <code>@angular/cli</code> pour créer votre composant.</p>
+<p><code>ng g component user-table-row</code></p>
+<p>Modifier votre code pour intégrer ce composant dans le composant UserTableComponent.</p>
+<p>Ci-dessous le code source ajouté au projet :</p>
+<pre><code>src/app
+└── user-table-row
+    ├── user-table-row.component.css
+    ├── user-table-row.component.html
+    ├── user-table-row.component.spec.ts
+    └── user-table-row.component.ts
+</code></pre>
+<h2>Conclusion</h2>
+<p>Ce TP vous aura appris à :</p>
 <ul>
-<li>Node v6 ou plus avec la commande npm –v,</li>
-<li>Git, nous l’utiliserons pour récupérer le projet initial,</li>
-<li>Webstorm (ou un autre IDE)</li>
+<li>utiliser les directives intégrées à Angular (<em>ngIf, </em>ngFor)</li>
+<li>créer un service Angular et l'injecter dans un composant</li>
+<li>créer des composants avec une relation parent-enfant</li>
+<li>créer et utiliser un template</li>
 </ul>
-<h2>Installation</h2>
-<h3>Initialisation du projet</h3>
-<p>Nous allons utiliser l'outil <code>@angular/cli</code> pour générer le projet. Placez-vous dans votre workspace
-et lancez les commandes suivantes :</p>
-<pre><code class="language-bash">npm install -g @angular/cli
-ng new tp-angular
-cd tp-angular
-npm install --save @angular/material
-</code></pre>
-<blockquote>
-<p>Une fois le projet créé vous pouvez l'ouvrir dans votre IDE.</p>
-</blockquote>
-<p>Pour lancer le serveur de développement :</p>
-<pre><code class="language-bash">ng serve
-</code></pre>
-<h2>Installation d'Angular Material</h2>
-<p>Nous allons utiliser Angular material pour créer les interfaces de nos applications.</p>
-<p>Lancer la commande suivante:</p>
-<pre><code class="language-bash">npm install --save @angular/material
-</code></pre>
-<p>Puis rajouter dans le fichier <code>app.module.ts</code> la dépendence du module comme suivant :</p>
-<pre><code class="language-typescript">import { MaterialModule } from '@angular/material';
-// other imports 
-@NgModule({
-  imports: [MaterialModule],
-  ...
-})
-export class AppModule { }
-</code></pre>
-<p>En complément vous pouvez rajouter la feuille de style suivante dans la page index si vous voulez utiliser
-les icônes de la librairie Material :</p>
-<pre><code class="language-html">&#x3C;link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</code></pre>
-<h2>Générer des Composants, Directives, Pipe, etc...</h2>
-<p>Vous pouvez utiliser la commande <code>ng generate</code> (ou <code>ng g</code>) pour générer des composants Angular : </p>
-<pre><code class="language-bash">ng generate component my-new-component
-ng g component my-new-component # using the alias
-
-# components support relative path generation
-# if in the directory src/app/feature/ and you run
-ng g component new-cmp
-# your component will be generated in src/app/feature/new-cmp
-# but if you were to run
-ng g component ../newer-cmp
-# your component will be generated in src/app/newer-cmp
-</code></pre>
-<p>Voici la liste des commandes possibles pour générer une fonctionnalité d'Angular: </p>
-<table>
-<thead>
-<tr>
-<th>Génération</th>
-<th>Usage</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://github.com/angular/angular-cli/wiki/generate-component">Component</a></td>
-<td><code>ng g component my-new-component</code></td>
-</tr>
-<tr>
-<td><a href="https://github.com/angular/angular-cli/wiki/generate-directive">Directive</a></td>
-<td><code>ng g directive my-new-directive</code></td>
-</tr>
-<tr>
-<td><a href="https://github.com/angular/angular-cli/wiki/generate-pipe">Pipe</a></td>
-<td><code>ng g pipe my-new-pipe</code></td>
-</tr>
-<tr>
-<td><a href="https://github.com/angular/angular-cli/wiki/generate-service">Service</a></td>
-<td><code>ng g service my-new-service</code></td>
-</tr>
-<tr>
-<td><a href="https://github.com/angular/angular-cli/wiki/generate-class">Class</a></td>
-<td><code>ng g class my-new-class</code></td>
-</tr>
-<tr>
-<td><a href="https://github.com/angular/angular-cli/wiki/generate-guard">Guard</a></td>
-<td><code>ng g guard my-new-guard</code></td>
-</tr>
-<tr>
-<td><a href="https://github.com/angular/angular-cli/wiki/generate-interface">Interface</a></td>
-<td><code>ng g interface my-new-interface</code></td>
-</tr>
-<tr>
-<td><a href="https://github.com/angular/angular-cli/wiki/generate-enum">Enum</a></td>
-<td><code>ng g enum my-new-enum</code></td>
-</tr>
-<tr>
-<td><a href="https://github.com/angular/angular-cli/wiki/generate-module">Module</a></td>
-<td><code>ng g module my-module</code></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>Correction du TP : <a href="resources/tp1-solution.zip">tp1-solution</a></p>
-</blockquote>
-<p><a href="tp2-composant-pipe.html">Suivant</a></p>
+<p><a href="tp4-formulaire-route.md">Suivant</a></p>
 
     </article>
 </div>

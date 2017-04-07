@@ -2,8 +2,7 @@
 
 Nous verrons au cours des travaux pratiques les points suivants :
 
-* [TP 1 – Mise en place de l’environnement](tp1-installation.md),
-* [TP 2 – Le chronomètre](tp2-composant-pipe.md),
+__generate-summary__
 
 ## Objectifs
 

@@ -7,7 +7,8 @@
   "checkout": {
     "branchs": [
       "tp1-solution",
-      "tp2-solution"
+      "tp2-solution",
+      "tp3-solution"
     ]
   },
 
@@ -15,7 +16,8 @@
     "files": [
       {"title": "Accueil", "cwd":"${root}/src", "path": "index.md"},
       {"title": "TP 1 - Installation", "cwd":"${root}/src", "path": "tp1-installation.md"},
-      {"title": "TP 2 - Le composant Chronomètre", "cwd":"${root}/src", "path": "tp2-composant-pipe.md"}
+      {"title": "TP 2 - Le composant Chronomètre", "cwd":"${root}/src", "path": "tp2-composant-pipe.md"},
+      {"title": "TP 3 - Créer une liste d'utilisateurs en ligne", "cwd":"${root}/src", "path": "tp3-composants-imbriques-service-directive-angular.md"}
     ]
   },
 

@@ -39,7 +39,7 @@ Ce service retourne la liste de tous les utilisateurs avec leur statut en ligne 
 ]
 ```
 
-## Compostant tableau des utilisateur
+## Composant tableau des utilisateurs
 
 Dans le dossier `src/app`, créer un dossier `user-table` qui contiendra tout le code source du composant UserTableComponent.
 
@@ -101,12 +101,12 @@ src/app
 ## Conclusion
 
 Ce TP vous aura appris à :
-```
-    - utiliser les directives intégrées à Angular (*ngIf, *ngFor)
-    - créer un service Angular et l'injecter dans un composant
-    - créer des composants avec une relation parent-enfant
-    - créer et utiliser un template
-```
+
+* utiliser les directives intégrées à Angular (*ngIf, *ngFor)
+* créer un service Angular et l'injecter dans un composant
+* créer des composants avec une relation parent-enfant
+* créer et utiliser un template
+
 
 [Suivant](tp4-formulaire-route.md)
 
