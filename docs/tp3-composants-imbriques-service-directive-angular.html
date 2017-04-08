@@ -96,24 +96,27 @@
 <blockquote>
 <p>Créer une liste d'utilisateurs en ligne</p>
 </blockquote>
-<p>Dans ce TP, nous allons créer un tableau contenant la liste des utilisateurs avec leur statut en ligne. </p>
+<p>Dans ce TP, nous allons créer un tableau contenant la liste des utilisateurs
+avec leur statut en ligne. </p>
 <p>Pour rappel, la structure initiale du projet est la suivante :</p>
-<pre><code>src/app
+<pre><code class="bash">src/app
 ├── app.component.css
 ├── app.component.html
 ├── app.component.spec.ts
 ├── app.component.ts
-├── app.module.ts
+└── app.module.ts
 </code></pre>
 <h2>Notre 1er Service</h2>
-<p>Dans le dossier <code>src/app</code>, créer votre 1er service sous le nom UserService.</p>
+<p>Dans le dossier <code>src/app</code>, créer votre 1er service sous le nom <code>UserService</code>.</p>
 <p>Pour aller plus vite, vous pouvez utiliser l'outil <code>@angular/cli</code> pour créer votre service.</p>
-<p><code>ng g service user</code></p>
-<pre><code>src/app
-├── user.service.spec.ts
-├── user.service.ts
+<pre><code class="bash">ng g service user
 </code></pre>
-<p>Ce service retourne la liste de tous les utilisateurs avec leur statut en ligne :</p>
+<p>Genèrera les fichiers suivants :</p>
+<pre><code class="bash">src/app
+├── user.service.spec.ts
+└── user.service.ts
+</code></pre>
+<p>Ce service devra retourner la liste de tous les utilisateurs :</p>
 <pre><code class="json">[
     {"id": 1, "email": "john.doe@gmail.com", "status": "online"},
     {"id": 2, "email": "jane.doe@gmail.com", "status": "online"},
@@ -124,36 +127,35 @@
 ]
 </code></pre>
 <h2>Composant tableau des utilisateurs</h2>
-<p>Dans le dossier <code>src/app</code>, créer un dossier <code>user-table</code> qui contiendra tout le code source du composant UserTableComponent.</p>
-<p>Ce composant UserTableComponent affiche la liste des utilisateurs avec leur statut dans tableau HTML.</p>
+<p>Dans le dossier <code>src/app</code>, créer un dossier <code>user-table</code> qui contiendra tout le code source du composant <code>UserTableComponent</code>.</p>
+<p>Ce composant <code>UserTableComponent</code> affiche la liste des utilisateurs avec leur statut dans tableau HTML.</p>
 <p>Pour aller plus vite, vous pouvez utiliser l'outil <code>@angular/cli</code> pour créer votre composant.</p>
-<p><code>ng g component user-table</code></p>
-<p>Ajouter les feuilles de style à votre composant pour que :</p>
-<pre><code>    - les lignes pairs soient en fonds gris clair
-    - le texte 'online' soit en vert
-    - le texte 'offline' soit en gris clair
-    - le texte 'busy' soit en rouge
-    - l'entête du tableau soit en fonds bleu clair, avec le texte en blanc
-</code></pre>
-<p>Cliquer sur le texte descriptif (balise caption) du tableau pour cacher/afficher les utilisateurs hors ligne.</p>
-<pre><code>    Le texte du caption est sousligné.
-    Chaque clic fait permuter les textes suivants :  
-    "Cliquez sur ce texte pour cacher les utilisateurs hors ligne", texte stylisé en gris clair
-    "Cliquez sur ce texte pour afficher les utilsateurs en ligne", texte stylisé en bleu foncé
+<pre><code class="bash">ng g component user-table
 </code></pre>
 <p>Ci-dessous le code source ajouté au projet :</p>
-<pre><code>src/app
+<pre><code class="bash">src/app
 └── user-table
     ├── user-table.component.css
     ├── user-table.component.html
     ├── user-table.component.spec.ts
     └── user-table.component.ts
 </code></pre>
+<p>Ajouter les feuilles de style à votre composant pour que :</p>
+<ul>
+<li>Les lignes pairs soient en fonds gris clair,</li>
+<li>Le texte <code>online</code> soit en vert,</li>
+<li>Le texte <code>offline</code> soit en gris clair,</li>
+<li>Le texte <code>busy</code> soit en rouge,</li>
+<li>L'entête du tableau soit en fonds bleu clair, avec le texte en blanc.</li>
+</ul>
+<p>Le tableau possède une checkbox (md-checkbox) permettant d'afficher soit les utilisateurs en ligne,
+soit tous les utilisateurs.</p>
 <h2>Composant enfant</h2>
-<p>Créer un composant UserTableRowComponent représentant une ligne du tableau.</p>
+<p>Créer un composant <code>UserTableRowComponent</code> représentant une ligne du tableau.</p>
 <p>Pour aller plus vite, vous pouvez utiliser l'outil <code>@angular/cli</code> pour créer votre composant.</p>
-<p><code>ng g component user-table-row</code></p>
-<p>Modifier votre code pour intégrer ce composant dans le composant UserTableComponent.</p>
+<pre><code class="bash">ng g component user-table-row
+</code></pre>
+<p>Modifier votre code pour intégrer ce composant dans le composant <code>UserTableComponent</code>.</p>
 <p>Ci-dessous le code source ajouté au projet :</p>
 <pre><code>src/app
 └── user-table-row
@@ -162,14 +164,19 @@
     ├── user-table-row.component.spec.ts
     └── user-table-row.component.ts
 </code></pre>
+<p>Le <code>UserTableRowComponent</code> devra gérer l'afficher des données de l'utilisateur ainsi que l'action de s'afficher ou se masquer
+en fonction du statut d'affichage demandé par le composant parent.</p>
 <h2>Conclusion</h2>
 <p>Ce TP vous aura appris à :</p>
 <ul>
-<li>utiliser les directives intégrées à Angular (<em>ngIf, </em>ngFor)</li>
-<li>créer un service Angular et l'injecter dans un composant</li>
-<li>créer des composants avec une relation parent-enfant</li>
-<li>créer et utiliser un template</li>
+<li>Utiliser les directives intégrées à Angular (<em>ngIf, </em>ngFor),</li>
+<li>Créer un service Angular et l'injecter dans un composant,</li>
+<li>Créer des composants avec une relation parent-enfant,</li>
+<li>Créer et utiliser un template.</li>
 </ul>
+<blockquote>
+<p>Correction du TP : <a href="resources/tp3-solution.zip">tp3-solution</a></p>
+</blockquote>
 <p><a href="tp4-formulaire-route.md">Suivant</a></p>
 
     </article>

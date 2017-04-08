@@ -77,15 +77,8 @@ Ajouter les feuilles de style à votre composant pour que :
 * Le texte `busy` soit en rouge,
 * L'entête du tableau soit en fonds bleu clair, avec le texte en blanc.
 
-
-Cliquer sur le texte descriptif (balise caption) du tableau pour cacher/afficher les utilisateurs hors ligne.
-
-Le texte du caption est sousligné.
-    
-Chaque clic fait permuter les textes suivants :
-  
- * Cliquez sur ce texte pour cacher les utilisateurs hors ligne", texte stylisé en gris clair,
- * Cliquez sur ce texte pour afficher les utilsateurs en ligne", texte stylisé en bleu foncé.
+Le tableau possède une checkbox (md-checkbox) permettant d'afficher soit les utilisateurs en ligne, 
+soit tous les utilisateurs.
 
 ## Composant enfant
 
@@ -97,7 +90,7 @@ Pour aller plus vite, vous pouvez utiliser l'outil `@angular/cli` pour créer vo
 ng g component user-table-row
 ```
 
-Modifier votre code pour intégrer ce composant dans le composant UserTableComponent.
+Modifier votre code pour intégrer ce composant dans le composant `UserTableComponent`.
 
 Ci-dessous le code source ajouté au projet :
 
@@ -110,14 +103,20 @@ src/app
     └── user-table-row.component.ts
 ```
 
+Le `UserTableRowComponent` devra gérer l'afficher des données de l'utilisateur ainsi que l'action de s'afficher ou se masquer 
+en fonction du statut d'affichage demandé par le composant parent.
+
 ## Conclusion
 
 Ce TP vous aura appris à :
 
-* utiliser les directives intégrées à Angular (*ngIf, *ngFor)
-* créer un service Angular et l'injecter dans un composant
-* créer des composants avec une relation parent-enfant
-* créer et utiliser un template
+* Utiliser les directives intégrées à Angular (*ngIf, *ngFor),
+* Créer un service Angular et l'injecter dans un composant,
+* Créer des composants avec une relation parent-enfant,
+* Créer et utiliser un template.
+
+
+> Correction du TP : #resources-tp3-solution
 
 
 [Suivant](tp4-formulaire-route.md)
