@@ -1,4 +1,5 @@
-# TP 2 - Le composant Chronomètre
+# TP 2
+> Le composant Chronomètre
 
 Nous allons dans ce TP créer un composant Chronomètre. Nous verrons ainsi comment créer un composant 
 ainsi que la création d'un Pipe pour formater l'affiche du composant.

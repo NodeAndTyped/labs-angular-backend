@@ -1,10 +1,10 @@
-# Labs Angular
+# Sommaire
 
 Nous verrons au cours des travaux pratiques les points suivants :
 
 __generate-summary__
 
-## Objectifs
+# Objectifs
 
 Le labs a pour objectif de vous présenter les différentes fonctionnalités d'Angular. Au programme :
 
