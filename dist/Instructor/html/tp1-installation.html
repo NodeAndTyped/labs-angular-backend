@@ -11,6 +11,7 @@
 
     <link type="text/css" rel="stylesheet" href="assets/styles/materialize.min.css" media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="assets/styles/github-markdown.css" />
+    <link type="text/css" rel="stylesheet" href="assets/styles/github.css" />
     <link type="text/css" rel="stylesheet" href="assets/styles/glyph.css" />
     <link type="text/css" rel="stylesheet" href="assets/styles/main.css" />
 
@@ -106,7 +107,7 @@
 <h3>Initialisation du projet</h3>
 <p>Nous allons utiliser l'outil <code>@angular/cli</code> pour générer le projet. Placez-vous dans votre workspace
 et lancez les commandes suivantes :</p>
-<pre><code class="language-bash">npm install -g @angular/cli
+<pre><code class="bash">npm install -g @angular/cli
 ng new tp-angular
 cd tp-angular
 npm install --save @angular/material
@@ -115,15 +116,15 @@ npm install --save @angular/material
 <p>Une fois le projet créé vous pouvez l'ouvrir dans votre IDE.</p>
 </blockquote>
 <p>Pour lancer le serveur de développement :</p>
-<pre><code class="language-bash">ng serve
+<pre><code class="bash">ng serve
 </code></pre>
 <h2>Installation d'Angular Material</h2>
 <p>Nous allons utiliser Angular material pour créer les interfaces de nos applications.</p>
 <p>Lancer la commande suivante:</p>
-<pre><code class="language-bash">npm install --save @angular/material
+<pre><code class="bash">npm install --save @angular/material
 </code></pre>
 <p>Puis rajouter dans le fichier <code>app.module.ts</code> la dépendence du module comme suivant :</p>
-<pre><code class="language-typescript">import { MaterialModule } from '@angular/material';
+<pre><code class="typescript">import { MaterialModule } from '@angular/material';
 // other imports 
 @NgModule({
   imports: [MaterialModule],
@@ -133,11 +134,11 @@ export class AppModule { }
 </code></pre>
 <p>En complément vous pouvez rajouter la feuille de style suivante dans la page index si vous voulez utiliser
 les icônes de la librairie Material :</p>
-<pre><code class="language-html">&#x3C;link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<pre><code class="html">&#x3C;link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </code></pre>
 <h2>Générer des Composants, Directives, Pipe, etc...</h2>
 <p>Vous pouvez utiliser la commande <code>ng generate</code> (ou <code>ng g</code>) pour générer des composants Angular : </p>
-<pre><code class="language-bash">ng generate component my-new-component
+<pre><code class="bash">ng generate component my-new-component
 ng g component my-new-component # using the alias
 
 # components support relative path generation
@@ -248,12 +249,18 @@ ng g component ../newer-cmp
 
 <script type="text/javascript" src="assets/scripts/jquery.min.js"></script>
 <script type="text/javascript" src="assets/scripts/materialize.min.js"></script>
+<script type="text/javascript" src="assets/scripts/highlight.pack.js"></script>
 
 <script>
     $( document ).ready(function(){
         $(".button-collapse").sideNav();
         $(".dropdown-button").dropdown();
     });
+</script>
+
+
+<script>
+    hljs.initHighlightingOnLoad();
 </script>
 
 </body>

@@ -1,5 +1,5 @@
 "use strict";
-import {Generator} from "ts-md-docs";
+import {Generator} from "../../ts-md-docs";
 
 import {$log} from "ts-log-debug";
 import * as Path from "path";

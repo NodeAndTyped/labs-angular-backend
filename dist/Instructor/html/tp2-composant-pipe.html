@@ -11,6 +11,7 @@
 
     <link type="text/css" rel="stylesheet" href="assets/styles/materialize.min.css" media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="assets/styles/github-markdown.css" />
+    <link type="text/css" rel="stylesheet" href="assets/styles/github.css" />
     <link type="text/css" rel="stylesheet" href="assets/styles/glyph.css" />
     <link type="text/css" rel="stylesheet" href="assets/styles/main.css" />
 
@@ -113,7 +114,7 @@ ainsi que la création d'un Pipe pour formater l'affiche du composant.</p>
 </code></pre>
 <p>Vous devez donc créer les fichiers nécessaires au componsant Chrono !</p>
 <p>Ensuite éditez le fichier <code>chrono.component.ts</code> et collez le contenu suivant :</p>
-<pre><code class="language-typescript">import { Component, OnInit } from '@angular/core';
+<pre><code class="typescript">import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'chrono',
@@ -132,7 +133,7 @@ export class ChronoComponent implements OnInit {
 }
 </code></pre>
 <p>Puis ajoutez le composant dans la liste des composants de <code>AppModule</code> comme suivant :</p>
-<pre><code class="language-typescript">@NgModule({
+<pre><code class="typescript">@NgModule({
     declarations: [
         AppComponent,
         ChronoComponent // &#x3C;- Ici
@@ -155,10 +156,10 @@ export class AppModule { }
 <p>Voici un exemple de ce qui est attendu :</p>
 <p><img src="images/chrono.png" alt="max-300"> </p>
 <p>Vous pouvez utiliser <code>@angular/material</code> pour créer un bouton comme suivant :`</p>
-<pre><code class="language-html">&#x3C;button md-raised-button>Text&#x3C;/button>
+<pre><code class="html">&#x3C;button md-raised-button>Text&#x3C;/button>
 </code></pre>
 <p>Pour le css :</p>
-<pre><code class="language-css">:host {
+<pre><code class="css">:host {
     text-align: center;
     display: block;
     width: 200px;
@@ -277,12 +278,18 @@ export class AppModule { }
 
 <script type="text/javascript" src="assets/scripts/jquery.min.js"></script>
 <script type="text/javascript" src="assets/scripts/materialize.min.js"></script>
+<script type="text/javascript" src="assets/scripts/highlight.pack.js"></script>
 
 <script>
     $( document ).ready(function(){
         $(".button-collapse").sideNav();
         $(".dropdown-button").dropdown();
     });
+</script>
+
+
+<script>
+    hljs.initHighlightingOnLoad();
 </script>
 
 </body>

@@ -169,5 +169,5 @@ Le filtre doit transformer/formatter un entier vers un string sur deux chiffres 
 
 > Correction du TP : #resources-tp2-solution
 
-[Suivant](tp2-composant-pipe.md)
+[Suivant](tp3-composants-imbriques-service-directive-angular.md)
 

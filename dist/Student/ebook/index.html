@@ -11,6 +11,7 @@
 
     <link type="text/css" rel="stylesheet" href="assets/styles/materialize.min.css" media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="assets/styles/github-markdown.css" />
+    <link type="text/css" rel="stylesheet" href="assets/styles/github.css" />
     <link type="text/css" rel="stylesheet" href="assets/styles/glyph.css" />
     <link type="text/css" rel="stylesheet" href="assets/styles/main.css" />
 
@@ -130,7 +131,7 @@
 <h3>Initialisation du projet</h3>
 <p>Nous allons utiliser l'outil <code>@angular/cli</code> pour générer le projet. Placez-vous dans votre workspace
 et lancez les commandes suivantes :</p>
-<pre><code class="language-bash">npm install -g @angular/cli
+<pre><code class="bash">npm install -g @angular/cli
 ng new tp-angular
 cd tp-angular
 npm install --save @angular/material
@@ -139,15 +140,15 @@ npm install --save @angular/material
 <p>Une fois le projet créé vous pouvez l'ouvrir dans votre IDE.</p>
 </blockquote>
 <p>Pour lancer le serveur de développement :</p>
-<pre><code class="language-bash">ng serve
+<pre><code class="bash">ng serve
 </code></pre>
 <h2>Installation d'Angular Material</h2>
 <p>Nous allons utiliser Angular material pour créer les interfaces de nos applications.</p>
 <p>Lancer la commande suivante:</p>
-<pre><code class="language-bash">npm install --save @angular/material
+<pre><code class="bash">npm install --save @angular/material
 </code></pre>
 <p>Puis rajouter dans le fichier <code>app.module.ts</code> la dépendence du module comme suivant :</p>
-<pre><code class="language-typescript">import { MaterialModule } from '@angular/material';
+<pre><code class="typescript">import { MaterialModule } from '@angular/material';
 // other imports 
 @NgModule({
   imports: [MaterialModule],
@@ -157,11 +158,11 @@ export class AppModule { }
 </code></pre>
 <p>En complément vous pouvez rajouter la feuille de style suivante dans la page index si vous voulez utiliser
 les icônes de la librairie Material :</p>
-<pre><code class="language-html">&#x3C;link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<pre><code class="html">&#x3C;link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </code></pre>
 <h2>Générer des Composants, Directives, Pipe, etc...</h2>
 <p>Vous pouvez utiliser la commande <code>ng generate</code> (ou <code>ng g</code>) pour générer des composants Angular : </p>
-<pre><code class="language-bash">ng generate component my-new-component
+<pre><code class="bash">ng generate component my-new-component
 ng g component my-new-component # using the alias
 
 # components support relative path generation
@@ -246,7 +247,7 @@ ainsi que la création d'un Pipe pour formater l'affiche du composant.</p>
 </code></pre>
 <p>Vous devez donc créer les fichiers nécessaires au componsant Chrono !</p>
 <p>Ensuite éditez le fichier <code>chrono.component.ts</code> et collez le contenu suivant :</p>
-<pre><code class="language-typescript">import { Component, OnInit } from '@angular/core';
+<pre><code class="typescript">import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'chrono',
@@ -265,7 +266,7 @@ export class ChronoComponent implements OnInit {
 }
 </code></pre>
 <p>Puis ajoutez le composant dans la liste des composants de <code>AppModule</code> comme suivant :</p>
-<pre><code class="language-typescript">@NgModule({
+<pre><code class="typescript">@NgModule({
     declarations: [
         AppComponent,
         ChronoComponent // &#x3C;- Ici
@@ -288,10 +289,10 @@ export class AppModule { }
 <p>Voici un exemple de ce qui est attendu :</p>
 <p><img src="images/chrono.png" alt="max-300"> </p>
 <p>Vous pouvez utiliser <code>@angular/material</code> pour créer un bouton comme suivant :`</p>
-<pre><code class="language-html">&#x3C;button md-raised-button>Text&#x3C;/button>
+<pre><code class="html">&#x3C;button md-raised-button>Text&#x3C;/button>
 </code></pre>
 <p>Pour le css :</p>
-<pre><code class="language-css">:host {
+<pre><code class="css">:host {
     text-align: center;
     display: block;
     width: 200px;
@@ -384,7 +385,7 @@ export class AppModule { }
 ├── user.service.ts
 </code></pre>
 <p>Ce service retourne la liste de tous les utilisateurs avec leur statut en ligne :</p>
-<pre><code class="language-json">[
+<pre><code class="json">[
     {"id": 1, "email": "john.doe@gmail.com", "status": "online"},
     {"id": 2, "email": "jane.doe@gmail.com", "status": "online"},
     {"id": 3, "email": "jean.dupond@gmail.com", "status": "busy"},
@@ -489,12 +490,18 @@ export class AppModule { }
 
 <script type="text/javascript" src="assets/scripts/jquery.min.js"></script>
 <script type="text/javascript" src="assets/scripts/materialize.min.js"></script>
+<script type="text/javascript" src="assets/scripts/highlight.pack.js"></script>
 
 <script>
     $( document ).ready(function(){
         $(".button-collapse").sideNav();
         $(".dropdown-button").dropdown();
     });
+</script>
+
+
+<script>
+    hljs.initHighlightingOnLoad();
 </script>
 
 </body>
