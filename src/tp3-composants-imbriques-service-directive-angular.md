@@ -46,7 +46,7 @@ Ce service devra retourner la liste de tous les utilisateurs :
 ]
 ```
 
-## Composant tableau des utilisateurs
+## Le composant tableau des utilisateurs
 
 Dans le dossier `src/app`, créer un dossier `user-table` qui contiendra tout le code source du composant `UserTableComponent`.
 
@@ -106,6 +106,19 @@ src/app
 Le `UserTableRowComponent` devra gérer l'afficher des données de l'utilisateur ainsi que l'action de s'afficher ou se masquer 
 en fonction du statut d'affichage demandé par le composant parent.
 
+
+## Communication entres composants
+
+Notre tableau affiche désormais les données. Nous allons maintenant utiliser l'annotation `@Output` pour émettre 
+un événement lorsque l'utilisateur clique sur le bouton correspondant à la ligne de l'utilisateur.
+Cet événement sera remonté vers le composant `UserTableComponent` qui remontera cet événement vers le composant `AppComponent`.
+
+Une fois l'information de l'utilisateur remonté dans `AppComponent`, vous devrez afficher les informations de l'utilisateur 
+dans une boite de dialogue (soit via une alert ou en utilisant la librairie [Material design](https://material.angular.io/components/component/dialog)).
+
+![max-300](images/user-table-and-popin.png) 
+
+
 ## Conclusion
 
 Ce TP vous aura appris à :
@@ -113,7 +126,8 @@ Ce TP vous aura appris à :
 * Utiliser les directives intégrées à Angular (*ngIf, *ngFor),
 * Créer un service Angular et l'injecter dans un composant,
 * Créer des composants avec une relation parent-enfant,
-* Créer et utiliser un template.
+* Créer et utiliser un template,
+* Communiquer entres les composants.
 
 
 > Correction du TP : #resources-tp3-solution

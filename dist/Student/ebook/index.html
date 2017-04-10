@@ -108,7 +108,7 @@
 <h1>Objectifs</h1>
 <p>Le labs a pour objectif de vous présenter les différentes fonctionnalités d'Angular. Au programme :</p>
 <ul>
-<li>Mise en place de l'environnement avec <code>@angular/cli</code></li>
+<li>Mise en place de l'environnement avec <code>@angular/cli</code>,</li>
 <li>Création d'un composant chronomètre et d'un Pipe,</li>
 <li>Utilisation des services Angular pour communiquer avec le backend,</li>
 <li>Création d'un formulaire de saisie,</li>
@@ -397,7 +397,7 @@ avec leur statut en ligne. </p>
     {"id": 6, "email": "joe.doe@gmail.com", "status": "online"}
 ]
 </code></pre>
-<h2>Composant tableau des utilisateurs</h2>
+<h2>Le composant tableau des utilisateurs</h2>
 <p>Dans le dossier <code>src/app</code>, créer un dossier <code>user-table</code> qui contiendra tout le code source du composant <code>UserTableComponent</code>.</p>
 <p>Ce composant <code>UserTableComponent</code> affiche la liste des utilisateurs avec leur statut dans tableau HTML.</p>
 <p>Pour aller plus vite, vous pouvez utiliser l'outil <code>@angular/cli</code> pour créer votre composant.</p>
@@ -437,13 +437,21 @@ soit tous les utilisateurs.</p>
 </code></pre>
 <p>Le <code>UserTableRowComponent</code> devra gérer l'afficher des données de l'utilisateur ainsi que l'action de s'afficher ou se masquer
 en fonction du statut d'affichage demandé par le composant parent.</p>
+<h2>Communication entres composants</h2>
+<p>Notre tableau affiche désormais les données. Nous allons maintenant utiliser l'annotation <code>@Output</code> pour émettre
+un événement lorsque l'utilisateur clique sur le bouton correspondant à la ligne de l'utilisateur.
+Cet événement sera remonté vers le composant <code>UserTableComponent</code> qui remontera cet événement vers le composant <code>AppComponent</code>.</p>
+<p>Une fois l'information de l'utilisateur remonté dans <code>AppComponent</code>, vous devrez afficher les informations de l'utilisateur
+dans une boite de dialogue (soit via une alert ou en utilisant la librairie <a href="https://material.angular.io/components/component/dialog">Material design</a>).</p>
+<p><img src="images/user-table-and-popin.png" alt="max-300"> </p>
 <h2>Conclusion</h2>
 <p>Ce TP vous aura appris à :</p>
 <ul>
 <li>Utiliser les directives intégrées à Angular (<em>ngIf, </em>ngFor),</li>
 <li>Créer un service Angular et l'injecter dans un composant,</li>
 <li>Créer des composants avec une relation parent-enfant,</li>
-<li>Créer et utiliser un template.</li>
+<li>Créer et utiliser un template,</li>
+<li>Communiquer entres les composants.</li>
 </ul>
 <blockquote>
 <p>Correction du TP : <a href="../../Resources/tp3-solution.zip">tp3-solution</a></p>
