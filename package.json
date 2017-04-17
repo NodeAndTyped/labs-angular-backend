@@ -21,14 +21,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NodeAndTyped/labs-angular2.git"
+    "url": "git+https://github.com/NodeAndTyped/labs-angular-backend.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/NodeAndTyped/labs-angular2/issues"
+    "url": "https://github.com/NodeAndTyped/labs-angular-backend/issues"
   },
-  "homepage": "https://github.com/NodeAndTyped/labs-angular2#readme",
+  "homepage": "https://github.com/NodeAndTyped/labs-angular-backend#readme",
   "dependencies": {
     "body-parser": "^1.17.1",
     "compression": "^1.6.2",
