@@ -1,10 +1,21 @@
 import {
-    Controller, Get, PathParams, Put, BodyParams, Post, Patch, Delete, Response, Required, Status
+    BodyParams,
+    Controller,
+    Delete,
+    Get,
+    Patch,
+    PathParams,
+    Post,
+    Put,
+    Required,
+    Status
 } from "ts-express-decorators";
+import {Description, Example, Returns, ReturnsArray, Summary} from "ts-express-decorators/lib/swagger";
+import {BadRequest, NotFound} from "ts-httpexceptions";
 import {$log} from "ts-log-debug";
+import {CredentialPayload} from "../../models/CredentialPayload";
+import {IUser, User} from "../../models/User";
 import {UsersService} from "../../services/UsersService";
-import {IUser, PartialUser} from "../../models/User";
-import {NotFound, Unauthorized, BadRequest} from "ts-httpexceptions";
 
 
 @Controller("/users")
@@ -16,15 +27,20 @@ export class UserCtrl {
 
     /**
      * Authenticate a user.
-     * @param email
-     * @param password
      * @returns {IUser}
+     * @param credential
      */
     @Post("/authenticate")
-    public authenticate(
-        @Required() @BodyParams("email") email: string,
-        @Required() @BodyParams("password") password: string
-    ) {
+    @Summary("Connexion utilisateur")
+    @Description("Service de connexion à l'application")
+    @Returns(404, {
+        description: "Authentication failed, user not found"
+    })
+    public authenticate(@Required()
+                        @Description("Email et mot de passe de l'utilisateur")
+                        @BodyParams() credential: CredentialPayload) {
+
+        const {email, password} = credential;
 
         $log.debug("authenticate user with email", email, " & password ", password);
 
@@ -32,12 +48,12 @@ export class UserCtrl {
 
         $log.debug("find user by email", user);
 
-        if(!user) {
-            throw new NotFound("authentication failed, user not found");
+        if (!user) {
+            throw new NotFound("Authentication failed, user not found");
         }
 
-        if(user.password !== password) {
-            throw new Unauthorized("authentication failed, wrong password");
+        if (user.password !== password) {
+            throw new NotFound("Authentication failed, user not found");
         }
 
         return this.usersService.update(user._id, {status: "online"});
@@ -49,11 +65,17 @@ export class UserCtrl {
      * @returns {IUser}
      */
     @Get("/:id")
-    public get(
-      @PathParams("id") idOrMail: string
-    ): IUser {
+    @Summary("Retourne un compte utilisateur")
+    @Description("Recherche un utilisateur à partir de son identifiant de compte ou à partir de son adresse e-mail")
+    @Returns(404, {
+        description: "User not found"
+    })
+    @Returns(User)
+    public get(@Description("Id du compte utilisateur ou adresse e-mail")
+               @Example("id or email@domain.fr")
+               @PathParams("id") idOrMail: string): IUser {
 
-        const user = this.usersService.findByEmail(idOrMail) || this.usersService.find(idOrMail)
+        const user = this.usersService.findByEmail(idOrMail) || this.usersService.find(idOrMail);
 
         if (!user) {
             throw new NotFound("User not found.");
@@ -63,10 +85,19 @@ export class UserCtrl {
     }
 
     @Patch("/:email/:status")
-    public updateStatus(
-        @Required() @PathParams("email") email: string,
-        @Required() @PathParams("status") status: string
-    ): IUser {
+    @Summary("Change le status de l'utilisateur")
+    @Returns(404, {
+        description: "User not found"
+    })
+    @Returns(400, {
+        description: "Wrong status or Wrong email"
+    })
+    @Returns(User)
+    public updateStatus(@Example("email@domain.fr")
+                        @Required() @PathParams("email") email: string,
+                        @Description("Status du compte \"offline\", \"busy\", \"online\"")
+                        @Example("busy")
+                        @Required() @PathParams("status") status: string): IUser {
 
         if (!this.usersService.checkStatus(status)) {
             throw new BadRequest("Wrong status");
@@ -79,7 +110,7 @@ export class UserCtrl {
         const user = this.usersService.findByEmail(email);
 
         if (!user) {
-            throw new NotFound("User not found.")
+            throw new NotFound("User not found.");
         }
 
         $log.debug("patch from email", email, "with status", status);
@@ -94,14 +125,18 @@ export class UserCtrl {
      * @returns {IUser}
      */
     @Put("/:id")
-    public update(
-        @PathParams("id") id: string,
-        @Required() @BodyParams("user") user: any
-    ): IUser {
+    @Summary("Mise à jour des informations du compte utilisateur")
+    @Returns(404, {
+        description: "User not found"
+    })
+    @Returns(User)
+    public update(@Example("58ebddf642dc90b2031faa36")
+                  @PathParams("id") id: string,
+                  @Required() @BodyParams("user") user: User): IUser {
         const oldUser = this.usersService.find(id);
 
         if (!oldUser) {
-            throw new NotFound("User not found.")
+            throw new NotFound("User not found.");
         }
 
         return this.usersService.update(oldUser._id, user);
@@ -114,14 +149,17 @@ export class UserCtrl {
      */
     @Post("/")
     @Status(201)
-    public create(
-        @Required() @BodyParams("user") user: IUser
-    ): IUser {
+    @Summary("Création d\'un compte utilisateur")
+    @Returns(400, {
+        description: "Email are required or Password are required or User already created with this email."
+    })
+    @Returns(User)
+    public create(@Required() @BodyParams("user") user: User): IUser {
 
         $log.debug("rest create user", user);
 
         if (!user.email || !this.usersService.checkEmail(user.email)) {
-           throw new BadRequest("Email are required");
+            throw new BadRequest("Email are required");
         }
 
         if (!user.password) {
@@ -129,7 +167,7 @@ export class UserCtrl {
         }
 
         if (this.usersService.findByEmail(user.email)) {
-            throw new BadRequest("User already created with this email.")
+            throw new BadRequest("User already created with this email.");
         }
 
         return this.usersService.create(user);
@@ -141,13 +179,19 @@ export class UserCtrl {
      * @returns {any}
      */
     @Delete("/:id")
-    public remove(
-        @PathParams("id") id: string
-    ) {
+    @Summary("Suppression du compte utilisateur")
+    @Description("Suppression d'un compte utilisateur à partir de son identifiant de compte")
+    @Returns(404, {
+        description: "Not found"
+    })
+    @Returns(User)
+    public remove(@Description("Identifiant du compte utilisateur")
+                  @Example("58ebddf642dc90b2031faa36")
+                  @PathParams("id") id: string) {
         const user = this.usersService.find(id);
 
         if (!user) {
-            throw new NotFound("User not found.")
+            throw new NotFound("User not found.");
         }
 
         this.usersService.remove(id);
@@ -160,6 +204,8 @@ export class UserCtrl {
      * @returns {IUser[]}
      */
     @Get("/")
+    @Summary("Retourne la liste des comptes utilisateurs")
+    @ReturnsArray(User)
     public getList(): IUser[] {
 
         return this.usersService.query().map(o => {

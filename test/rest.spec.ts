@@ -1,30 +1,27 @@
 process.env.NODE_ENV = "test";
 
-import {Done, bootstrap, inject} from "ts-express-decorators/testing";
 import {expect} from "chai";
-import {$log} from "ts-log-debug";
-import {Server} from "../src/index";
-import {ExpressApplication} from "ts-express-decorators";
 
 import * as SuperTest from "supertest";
+import {ExpressApplication} from "ts-express-decorators";
+import {bootstrap, Done, inject} from "ts-express-decorators/testing";
+import {Server} from "../src/index";
 
 
+describe("Rest :", () => {
 
-describe('Rest :', () => {
 
-
-    it('should do nothing', () => {
+    it("should do nothing", () => {
 
         expect(true).to.be.true;
 
     });
 
-    beforeEach(() => $log.setRepporting({debug: false, info: false, error: false}));
     beforeEach(bootstrap(Server));
 
     describe("POST /api/users/authenticate", () => {
 
-        it("should respond 400",  inject([ExpressApplication, Done], (expressApplication: ExpressApplication, done: Done) => {
+        it("should respond 400", inject([ExpressApplication, Done], (expressApplication: ExpressApplication, done: Done) => {
 
             SuperTest(expressApplication)
                 .post("/api/users/authenticate")
@@ -37,20 +34,18 @@ describe('Rest :', () => {
 
         }));
 
-        it("should respond 400",  inject([ExpressApplication, Done], (expressApplication: ExpressApplication, done: Done) => {
+        it("should respond 400", inject([ExpressApplication, Done], (expressApplication: ExpressApplication, done: Done) => {
 
             SuperTest(expressApplication)
                 .post("/api/users/authenticate")
-                .send({
-
-                })
+                .send({})
                 .expect(400)
                 .end(done as any);
 
 
         }));
 
-        it("should respond 404",  inject([ExpressApplication, Done], (expressApplication: ExpressApplication, done: Done) => {
+        it("should respond 404", inject([ExpressApplication, Done], (expressApplication: ExpressApplication, done: Done) => {
 
             SuperTest(expressApplication)
                 .post("/api/users/authenticate")
@@ -65,7 +60,7 @@ describe('Rest :', () => {
         }));
 
 
-        it("should respond 401",  inject([ExpressApplication, Done], (expressApplication: ExpressApplication, done: Done) => {
+        it("should respond 404", inject([ExpressApplication, Done], (expressApplication: ExpressApplication, done: Done) => {
 
             SuperTest(expressApplication)
                 .post("/api/users/authenticate")
@@ -73,13 +68,13 @@ describe('Rest :', () => {
                     email: "johnniebenson@cytrex.com",
                     password: "test"
                 })
-                .expect(401)
+                .expect(404)
                 .end(done as any);
 
 
         }));
 
-        it("should respond 200",  inject([ExpressApplication, Done], (expressApplication: ExpressApplication, done: Done) => {
+        it("should respond 200", inject([ExpressApplication, Done], (expressApplication: ExpressApplication, done: Done) => {
 
             SuperTest(expressApplication)
                 .post("/api/users/authenticate")
@@ -96,12 +91,12 @@ describe('Rest :', () => {
 
                     let obj = JSON.parse(response.text);
 
-                    expect(obj).to.be.an('object');
-                    expect(obj._id).to.be.equals('58ebddf642dc90b2031faa36');
-                    expect(obj.firstName).to.be.equals('Johnnie');
-                    expect(obj.email).to.be.equals('johnniebenson@cytrex.com');
-                    expect(obj.password).to.be.equals('12345');
-                    expect(obj.status).to.be.equals('online');
+                    expect(obj).to.be.an("object");
+                    expect(obj._id).to.be.equals("58ebddf642dc90b2031faa36");
+                    expect(obj.firstName).to.be.equals("Johnnie");
+                    expect(obj.email).to.be.equals("johnniebenson@cytrex.com");
+                    expect(obj.password).to.be.equals("12345");
+                    expect(obj.status).to.be.equals("online");
 
                     done();
 
@@ -113,7 +108,7 @@ describe('Rest :', () => {
 
     describe("GET /api/users", () => {
 
-        it("should respond 200",  inject([ExpressApplication, Done], (expressApplication: ExpressApplication, done: Done) => {
+        it("should respond 200", inject([ExpressApplication, Done], (expressApplication: ExpressApplication, done: Done) => {
 
             SuperTest(expressApplication)
                 .get("/api/users")
@@ -126,7 +121,7 @@ describe('Rest :', () => {
 
                     let obj = JSON.parse(response.text);
 
-                    expect(obj).to.be.an('array');
+                    expect(obj).to.be.an("array");
                     expect(obj[0].password).to.be.undefined;
                     done();
 
@@ -151,12 +146,12 @@ describe('Rest :', () => {
 
                     let obj = JSON.parse(response.text);
 
-                    expect(obj).to.be.an('object');
-                    expect(obj._id).to.be.equals('58ebddf642dc90b2031faa36');
-                    expect(obj.firstName).to.be.equals('Johnnie');
-                    expect(obj.email).to.be.equals('johnniebenson@cytrex.com');
-                    expect(obj.password).to.be.equals('12345');
-                    expect(obj.status).to.be.equals('online');
+                    expect(obj).to.be.an("object");
+                    expect(obj._id).to.be.equals("58ebddf642dc90b2031faa36");
+                    expect(obj.firstName).to.be.equals("Johnnie");
+                    expect(obj.email).to.be.equals("johnniebenson@cytrex.com");
+                    expect(obj.password).to.be.equals("12345");
+                    expect(obj.status).to.be.equals("online");
                     done();
 
                 });
@@ -176,12 +171,12 @@ describe('Rest :', () => {
 
                     let obj = JSON.parse(response.text);
 
-                    expect(obj).to.be.an('object');
-                    expect(obj._id).to.be.equals('58ebddf642dc90b2031faa36');
-                    expect(obj.firstName).to.be.equals('Johnnie');
-                    expect(obj.email).to.be.equals('johnniebenson@cytrex.com');
-                    expect(obj.password).to.be.equals('12345');
-                    expect(obj.status).to.be.equals('online');
+                    expect(obj).to.be.an("object");
+                    expect(obj._id).to.be.equals("58ebddf642dc90b2031faa36");
+                    expect(obj.firstName).to.be.equals("Johnnie");
+                    expect(obj.email).to.be.equals("johnniebenson@cytrex.com");
+                    expect(obj.password).to.be.equals("12345");
+                    expect(obj.status).to.be.equals("online");
                     done();
 
                 });
@@ -213,11 +208,11 @@ describe('Rest :', () => {
 
                         let obj = JSON.parse(response.text);
 
-                        expect(obj).to.be.an('object');
-                        expect(obj._id).to.be.a('string');
-                        expect(obj.firstName).to.be.equals('Johnie');
-                        expect(obj.email).to.be.equals('test@test.fr');
-                        expect(obj.password).to.be.equals('12345');
+                        expect(obj).to.be.an("object");
+                        expect(obj._id).to.be.a("string");
+                        expect(obj.firstName).to.be.equals("Johnie");
+                        expect(obj.email).to.be.equals("test@test.fr");
+                        expect(obj.password).to.be.equals("12345");
 
                         id = obj._id;
 
@@ -239,11 +234,11 @@ describe('Rest :', () => {
 
                         let obj = JSON.parse(response.text);
 
-                        expect(obj).to.be.an('object');
+                        expect(obj).to.be.an("object");
                         expect(obj._id).to.be.equals(id);
-                        expect(obj.firstName).to.be.equals('Johnie');
-                        expect(obj.email).to.be.equals('test@test.fr');
-                        expect(obj.password).to.be.equals('12345');
+                        expect(obj.firstName).to.be.equals("Johnie");
+                        expect(obj.email).to.be.equals("test@test.fr");
+                        expect(obj.password).to.be.equals("12345");
 
                         done();
 
@@ -285,11 +280,11 @@ describe('Rest :', () => {
 
                         let obj = JSON.parse(response.text);
 
-                        expect(obj).to.be.an('object');
-                        expect(obj.firstName).to.be.equals('Johnie');
-                        expect(obj.email).to.be.equals('test@test.fr');
-                        expect(obj.password).to.be.equals('12345');
-                        expect(obj.status).to.be.equals('offline');
+                        expect(obj).to.be.an("object");
+                        expect(obj.firstName).to.be.equals("Johnie");
+                        expect(obj.email).to.be.equals("test@test.fr");
+                        expect(obj.password).to.be.equals("12345");
+                        expect(obj.status).to.be.equals("offline");
 
                         done();
 
@@ -307,7 +302,9 @@ describe('Rest :', () => {
                     .put("/api/users/58ebddf642dc90b2031faa36")
                     .send({
                         user: {
-                            firstName:"test"
+                            firstName: "test",
+                            lastName: "test",
+                            email: "email@domain.fr"
                         }
                     })
                     .expect(200)
@@ -319,8 +316,8 @@ describe('Rest :', () => {
 
                         let obj = JSON.parse(response.text);
 
-                        expect(obj).to.be.an('object');
-                        expect(obj.firstName).to.be.equals('test');
+                        expect(obj).to.be.an("object");
+                        expect(obj.firstName).to.be.equals("test");
 
                         done();
 
